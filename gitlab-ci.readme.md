@@ -42,7 +42,7 @@ The `--tag-list` parameter is used to identify or describe the environment withi
 
 ## Preparing the gitlab-runner image integration
 
-Clone the gitlab:eyeo/adblcockplus/v8-project into this directory.
+Clone the gitlab:eyeo/adblockplus/v8-project into this directory.
 
     cd /opt/eyeo/v8-project-gitlab-runner
     git clone git@gitlab.com:eyeo/adblockplus/v8-project.git
