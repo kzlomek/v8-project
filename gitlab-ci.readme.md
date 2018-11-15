@@ -49,9 +49,9 @@ Clone the gitlab:eyeo/adblcockplus/v8-project into this directory.
 
 ## Build custom gitlab-runner image and run it
 
-Switch to the directory of the Dockerfile:
+Switch to the directory of the gitlab-runner Dockerfile:
 
-    cd docker
+    cd v8-project/docker
 
 Build the new image based on the generated configuration
 
