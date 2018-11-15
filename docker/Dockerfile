@@ -6,6 +6,7 @@ RUN dpkg --add-architecture i386
 RUN apt-get update -qyy
 
 RUN apt-get install -qyy \
+  sudo \
   dumb-init \
   curl \
   libc6:i386
@@ -17,6 +18,13 @@ COPY pin-gitlab-runner.pref /etc/apt/preferences.d/pin-gitlab-runner.pref
 RUN apt-get install -qyy \
   gitlab-runner
 
+RUN adduser --gecos "" --disabled-password ci_user \
+  && usermod -aG sudo ci_user \
+  && echo "ci_user ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+
+RUN mkdir /opt/ci
+RUN chown -R ci_user:ci_user /opt/ci
+
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 
-CMD ["gitlab-runner", "run", "--working-directory", "/opt/ci"]
+CMD ["gitlab-runner", "run", "--working-directory", "/opt/ci", "--user", "ci_user"]

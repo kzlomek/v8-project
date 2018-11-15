@@ -7,15 +7,15 @@ stages:
 is_merged:
   stage: is_merged
   before_script:
-    - apt-get update
-    - apt-get install -yyq python3.6
+    - sudo apt-get update
+    - sudo apt-get install -yyq python3.6
   script: python3.6 .gitlab-ci/check-first-parent.py
 
 .job_template: &common_build_v8_lib
   stage: build
   before_script:
-    - apt-get update
-    - apt-get install -yyq python python3.6 build-essential libgtk2.0-dev
+    - sudo apt-get update
+    - sudo apt-get install -yyq python python3.6 build-essential libgtk2.0-dev
     - python3.6 build.py sync
   artifacts:
     paths:
