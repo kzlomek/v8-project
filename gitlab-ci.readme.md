@@ -18,7 +18,7 @@ Create a directory to store the registration configuration. This will be used to
 
     mkdir -p /opt/eyeo/v8-project-gitlab-runner/etc_gitlab-runner
 
-We use the official gitlab-runner image for the registration. Run the registration in a one-off docker container:
+We use the official gitlab-runner image for the registration, for the sake of simplicity. However such schema may not work, in this case please register the corresponding gitlab-runner from the actual runner environment. Run the registration in a one-off docker container:
 
 ```
 docker run --rm -t -i \
@@ -62,7 +62,7 @@ Finally, run the gitlab-runner container. In order to provide more flexible disk
 ```
 docker run --rm -t -i \
   -v /opt/eyeo/v8-project-gitlab-runner/etc_gitlab-runner:/etc/gitlab-runner \
-  -veyeo-aa-dp-v8-project-vol:/opt/ci \
+  -v eyeo-aa-dp-v8-project-vol:/opt/ci \
    eyeo-aa-dp/v8-project_gitlab-runner
 ```
 
