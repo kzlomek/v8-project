@@ -14,8 +14,11 @@ lint_commit:
 .job_template: &common_build_v8_lib
   stage: build
   before_script:
+# We build V8 for arm but it requires to run mksnapshot of the same bitness on the host, thus we need to run 32 bit mksnapshot. However in order to do it one has to install libc6:i386 because currently the host runns only 64 bit applications.
+# Add i386 arch in order to install libc6:i386.
+    - sudo dpkg --add-architecture i386
     - sudo apt-get update
-    - sudo apt-get install -yyq python python3.6 build-essential libgtk2.0-dev
+    - sudo apt-get install -yyq python python3.6 build-essential libgtk2.0-dev libc6:i386
     - python3.6 build.py sync
 
 build_v8_lib:x64-linux-debug:
