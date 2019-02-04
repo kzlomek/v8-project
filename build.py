@@ -8,7 +8,7 @@ import subprocess
 import sys
 
 depot_tools_repository_url = 'https://chromium.googlesource.com/chromium/tools/depot_tools.git'
-default_v8_revision = '4d72a9931a125d21901d25d67896f0e40105bd16'
+default_v8_revision = '5f246c123ea463b189ca0579c0a9074459e20a6f'
 
 this_dir_path = os.path.dirname(os.path.realpath(__file__))
 third_party = 'third_party'
